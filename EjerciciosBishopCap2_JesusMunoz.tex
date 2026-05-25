@@ -1,0 +1,247 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+
+\title{Ejercicios Selectos de Bishop Cap 2}
+\author{Jesús Muñoz Cano}
+\date{Marzo 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Ejercicio 2.5}
+
+Demostrar que, para \(a>0\) y \(b>0\),
+\[
+\int_{0}^{1} \mu^{a-1}(1-\mu)^{b-1}\,d\mu
+=\frac{\Gamma(a)\,\Gamma(b)}{\Gamma(a+b)}.
+\]
+
+Partimos de la definición de la función gamma:
+\[
+\Gamma(a)=\int_{0}^{\infty} e^{-x}x^{a-1}\,dx,\qquad
+\Gamma(b)=\int_{0}^{\infty} e^{-y}y^{b-1}\,dy.
+\]
+
+\subsection*{Solución}
+Multiplicando obtenemos la integral doble
+\[
+\Gamma(a)\Gamma(b)
+=\int_{0}^{\infty}\int_{0}^{\infty} e^{-x}x^{a-1}\, e^{-y}y^{b-1}\,dy\,dx
+=\int_{0}^{\infty}\int_{0}^{\infty} e^{-(x+y)} x^{a-1} y^{b-1}\,dy\,dx.
+\]
+
+Hacemos el cambio de variables \[t:=x+y\]
+de donde \(dy=dt\) para una \(x\) constante. Los límites de integración ahora son
+\[
+y\in(0,\infty) \Longrightarrow\ t\in(x,\infty)
+\]
+
+Ya que cuando $ y = 0 $ tenemos que $ t = x $ y la nueva región a integrar es una región triangular por encima de $t = x$ en el primer cuadrante del plano $xt$. 
+
+Sustituyendo en la integral doble:
+\[
+\Gamma(a)\Gamma(b)
+=\int_{x=0}^{\infty}\int_{t=x}^{\infty}
+e^{-t}\,x^{a-1}\,(t-x)^{b-1}\,dt\,dx.
+\]
+
+Luego intercambiamos el orden de integración, ajustando nuevamente los límites:
+\[
+\Gamma(a)\Gamma(b)
+=\int_{t=0}^{\infty}\int_{x=0}^{t}
+e^{-t}\,x^{a-1}\,(t-x)^{b-1}\,dx\,dt.
+\]
+
+Hacemos el cambio de variables \[x:=\mu t\]
+de donde \(dx=t\,d\mu\) para una \(t\) constante. Se cambian los limites de integración, cuando $ x = t $ tenemos que $ \mu = 1 $
+
+\[
+\Gamma(a)\Gamma(b)
+=\int_{t=0}^{\infty}\int_{\mu=0}^{1}
+e^{-t}\,(\mu t)^{a-1}\,((1-\mu)t)^{b-1}\,t\,d\mu\,dt.
+\]
+Agrupando potencias de \(t\) y factores independientes de \(\mu\):
+\[
+\Gamma(a)\Gamma(b)
+=\int_{0}^{\infty} e^{-t}\,t^{a+b-1}\,dt
+\cdot
+\int_{0}^{1} \mu^{a-1}(1-\mu)^{b-1}\,d\mu.
+\]
+
+La primera integral es, por definición, \(\Gamma(a+b)\). Por lo tanto
+\[
+\Gamma(a)\Gamma(b)=\Gamma(a+b)\,
+\int_{0}^{1} \mu^{a-1}(1-\mu)^{b-1}\,d\mu.
+\]
+Despejando la integral beta obtenemos la identidad buscada:
+\[
+\boxed{
+\int_{0}^{1} \mu^{a-1}(1-\mu)^{b-1}\,d\mu
+=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}.
+}
+\]
+
+\section*{Ejercicio 2.10}
+
+Usando la propiedad de la función Gamma
+\(\Gamma(x+1)=x\Gamma(x)\), encontrar la media, varianza y covarianza de la distribución de Dirichlet.
+
+\subsection*{Solución}
+
+Sea la distribución Dirichlet con parámetros \(\alpha_1,\dots,\alpha_M>0\) definida en
+\(\{\mu\in\mathbb{R}^M:\ \mu_k\ge0,\ \sum_{k=1}^M\mu_k=1\}\) por la densidad
+\[
+p(\mu)
+=\frac{1}{B(\alpha)}\prod_{k=1}^M \mu_k^{\alpha_k-1},
+\qquad
+B(\alpha)=\frac{\prod_{k=1}^M\Gamma(\alpha_k)}{\Gamma(\alpha_0)},
+\]
+donde \(\alpha_0:=\sum_{k=1}^M\alpha_k\). 
+
+
+Usando el hecho de que es una distribución normalizada:
+\[
+\int\prod_{k=1}^M \mu_k^{\alpha_k-1}\,d\mu
+= \frac{\prod_{k=1}^M\Gamma(\alpha_k)}{\Gamma(\alpha_0)}.
+\]
+
+De la definición del valor esperado:
+\[
+\mathbb{E}[\mu_j]
+=\int \mu_j\, p(\mu)\,d\mu
+=\frac{1}{B(\alpha)} \int \mu_j\prod_{k=1}^M \mu_k^{\alpha_k-1}\,d\mu.
+\]
+
+Al multiplicar el integrando por \(\mu_j\) se incrementa en \(1\) el exponente de \(\mu_j\) (que sería alguno de $\mu_1$ a $\mu_M$):
+\[
+\mu_j\prod_{k=1}^M \mu_k^{\alpha_k-1}
+=\prod_{k\neq j}\mu_k^{\alpha_k-1}\cdot \mu_j^{(\alpha_j-1)+1}
+=\prod_{k=1}^M \mu_k^{\alpha'_k-1},
+\]
+donde definimos \(\alpha'_k=\alpha_k\) si \(k\neq j\) y \(\alpha'_j=\alpha_j+1\).
+Por tanto la integral anterior es exactamente la integral de normalización, solo que evaluada en los parámetros \(\alpha'\):
+\[
+\int \mu_j\prod_{k=1}^M \mu_k^{\alpha_k-1}\,d\mu
+= \frac{\prod_{k=1}^M\Gamma(\alpha'_k)}{\Gamma(\alpha'_0)}
+= \frac{\Gamma(\alpha_j+1)\prod_{k\neq j}\Gamma(\alpha_k)}{\Gamma(\alpha_0+1)},
+\]
+donde \(\alpha'_0=\alpha_0+1\) recordando que \(\alpha_0\) es la suma de todos los parámetros \(\alpha_k\), por lo que si aumentamos \(\alpha_j\) en $1$ unidad, también lo hace \(\alpha'_0\). 
+
+Sustituyendo en la esperanza:
+\[
+\mathbb{E}[\mu_j]
+=\frac{1}{B(\alpha)}\cdot
+\frac{\Gamma(\alpha_j+1)\prod_{k\neq j}\Gamma(\alpha_k)}{\Gamma(\alpha_0+1)}.
+\]
+Sustituyendo \(B(\alpha)\) se obtiene el cociente
+\[
+\mathbb{E}[\mu_j]
+=\frac{\Gamma(\alpha_0)}{\prod_k\Gamma(\alpha_k)}\cdot
+\frac{\Gamma(\alpha_j+1)\prod_{k\neq j}\Gamma(\alpha_k)}{\Gamma(\alpha_0+1)}
+= \frac{\Gamma(\alpha_j+1)}{\Gamma(\alpha_j)}\cdot
+\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_0+1)}.
+\]
+Ahora aplicamos la propiedad de la función Gamma
+\(\Gamma(x+1)=x\Gamma(x)\):
+\[
+\frac{\Gamma(\alpha_j+1)}{\Gamma(\alpha_j)}=\alpha_j,\qquad
+\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_0+1)}=\frac{1}{\alpha_0}.
+\]
+Con esto queda
+\[
+\boxed{\displaystyle \mathbb{E}[\mu_j]=\frac{\alpha_j}{\alpha_0}.}
+\]
+
+Para la varianza, ahora primero calculamos \(\mathbb{E}[\mu_j^2]\) de forma análoga:
+\[
+\mathbb{E}[\mu_j^2]
+=\frac{1}{B(\alpha)}\int \mu_j^2\prod_{k} \mu_k^{\alpha_k-1}\,d\mu
+=\frac{\Gamma(\alpha_0)}{\prod_k\Gamma(\alpha_k)}\cdot
+\frac{\Gamma(\alpha_j+2)\prod_{k\neq j}\Gamma(\alpha_k)}{\Gamma(\alpha_0+2)}
+\]
+después de simplificar y aplicar la propiedad \(\Gamma(x+2)=(x+1)\Gamma(x+1)\):
+\[
+\mathbb{E}[\mu_j^2]
+=\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_j)}\cdot
+\frac{\Gamma(\alpha_j+2)}{\Gamma(\alpha_0+2)}
+=\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_j)}\cdot
+\frac{\Gamma(\alpha_j+1)}{\Gamma(\alpha_0+1)}\cdot
+\frac{\alpha_j+1}{\alpha_0+1}
+\]
+Sustituyendo el resultado anterior de la media, tenemos:
+\[
+\mathbb{E}[\mu_j^2]
+=\frac{\alpha_j(\alpha_j+1)}{\alpha_0(\alpha_0+1)}.
+\]
+La varianza resulta entonces
+\[
+\operatorname{var}[\mu_j]
+=\mathbb{E}[\mu_j^2]-\mathbb{E}[\mu_j]^2
+=\frac{\alpha_j(\alpha_j+1)}{\alpha_0(\alpha_0+1)}-\left(\frac{\alpha_j}{\alpha_0}\right)^2
+=\frac{\alpha_j(\alpha_0-\alpha_j)}{\alpha_0^2(\alpha_0+1)}.
+\]
+Así,
+\[
+\boxed{\displaystyle \operatorname{var}[\mu_j]=\frac{\alpha_j(\alpha_0-\alpha_j)}{\alpha_0^2(\alpha_0+1)}.}
+\]
+
+Ahora para la covarianza, primero calculemos:
+\[
+\mathbb{E}[\mu_j\mu_\ell]
+=\frac{1}{B(\alpha)}\int\mu_j\mu_\ell\prod_k\mu_k^{\alpha_k-1}\,d\mu
+=\frac{\Gamma(\alpha_0)}{\prod_k\Gamma(\alpha_k)}\cdot
+\frac{\Gamma(\alpha_j+1)\Gamma(\alpha_l+1)\prod_{k\neq j, k \neq l}\Gamma(\alpha_k)}{\Gamma(\alpha_0+2)}
+\]
+
+Por tanto, simplificando y aplicando la propiedad de la función Gamma nuevamente:
+\[
+\mathbb{E}[\mu_j\mu_\ell]
+=\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_j)\Gamma(\alpha_l)}\cdot
+\frac{\Gamma(\alpha_j+1)\Gamma(\alpha_l+1)}{\Gamma(\alpha_0+2)}
+=\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_0+1)}\cdot
+\frac{\alpha_j \alpha_l}{\alpha_0+1}
+=\frac{\alpha_j\alpha_\ell}{\alpha_0(\alpha_0+1)}.
+\]
+Finalmente la covarianza es
+\[
+\operatorname{cov}[\mu_j,\mu_\ell]
+=\mathbb{E}[\mu_j\mu_\ell]-\mathbb{E}[\mu_j]\mathbb{E}[\mu_\ell]
+=\frac{\alpha_j\alpha_\ell}{\alpha_0(\alpha_0+1)}
+-\frac{\alpha_j\alpha_\ell}{\alpha_0^2}
+=-\frac{\alpha_j\alpha_\ell}{\alpha_0^2(\alpha_0+1)}.
+\]
+Es decir,
+\[
+\boxed{\displaystyle \operatorname{cov}[\mu_j,\mu_\ell]
+=-\frac{\alpha_j\alpha_\ell}{\alpha_0^2(\alpha_0+1)},\qquad j\neq\ell.}
+\]
+
+\section*{Ejercicio 2.22}
+
+Demostrar que la inversa de una matriz simétrica es simétrica.
+
+\subsection*{Solución}
+Si \(A\) es simétrica, entonces \(A^T=A\). La inversa de \(A\) cumple que:
+\[
+AA^{-1}=I.
+\]
+Tomando la transpuesta,
+\[
+(AA^{-1})^T=I^T.
+\]
+Por las propiedades distributivas de la transpuesta,
+\[
+(A^{-1})^T A^T = I^T.
+\]
+Como \(A^T=A\) y \(I^T=I\) al ser simétricas,
+\[
+(A^{-1})^T A = I.
+\]
+Finalmente al tomar la inversa de \(A\),
+\[
+\boxed{(A^{-1})^T = A^{-1}.}
+\]
+Luego \(A^{-1}\) es simétrica como se quería demostrar.
+
+\end{document}
