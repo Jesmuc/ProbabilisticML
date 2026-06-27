@@ -1,0 +1,4 @@
+model,contexto,trainable_params,stored_events_or_params,val_loss,val_ppl,train_seconds
+GRU,estado recurrente sobre ventanas de 48 tokens,692228,692228,3.243018570563776,25.610913534016426,62.798991203308105
+feedforward ventana fija,ultimos 3 tokens -> embeddings concatenados,494340,494340,3.376982573982623,29.282280558374286,21.46102499961853
+n-grama conteos,4-grama: ultimos 3 tokens exactos + backoff,0,17570,4.739535929873723,114.38110850616539,0.06545662879943848

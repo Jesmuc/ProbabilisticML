@@ -1,0 +1,37 @@
+model,prompt,sample_idx,text
+n-grama conteos,quiero reservar una habitación,1,quiero reservar una habitación para <num> adultos y un bebé pequeño nadar
+feedforward ventana fija,quiero reservar una habitación,1,quiero reservar una habitación para <num> adultos y <num> niños
+GRU,quiero reservar una habitación,1,quiero reservar una habitación para <num> adultos y <num> niños
+n-grama conteos,quiero reservar una habitación,2,quiero reservar una habitación para <num> noches a partir del <num> de <mes>
+feedforward ventana fija,quiero reservar una habitación,2,quiero reservar una habitación para <num> adultos y <num> niños
+GRU,quiero reservar una habitación,2,quiero reservar una habitación para esta noche
+n-grama conteos,quiero reservar una habitación,3,"quiero reservar una habitación para <num> adultos en <num> habrá una persona menos champú en la ducha manera, año"
+feedforward ventana fija,quiero reservar una habitación,3,quiero reservar una habitación para <num> adultos y <num> niños
+GRU,quiero reservar una habitación,3,quiero reservar una habitación con <num> niños
+n-grama conteos,necesito cambiar mi reserva,1,"necesito cambiar mi reserva de habitación a nombre de greogry para las próximas <num> horas, por favor."
+feedforward ventana fija,necesito cambiar mi reserva,1,necesito cambiar mi reserva de hotel
+GRU,necesito cambiar mi reserva,1,necesito cambiar mi reserva a nombre de normand dasher es para esta noche
+n-grama conteos,necesito cambiar mi reserva,2,"necesito cambiar mi reserva para una cena, mi nombre es emelda ofrecéis masajes?"
+feedforward ventana fija,necesito cambiar mi reserva,2,necesito cambiar mi reserva de habitación para el <num> de <mes>
+GRU,necesito cambiar mi reserva,2,necesito cambiar mi reserva de restaurante a las <hora> p. m.
+n-grama conteos,necesito cambiar mi reserva,3,necesito cambiar mi reserva a una suite prémium
+feedforward ventana fija,necesito cambiar mi reserva,3,necesito cambiar mi reserva de hotel
+GRU,necesito cambiar mi reserva,3,"necesito cambiar mi reserva de mi habitación, por favor, pero no sé dónde"
+n-grama conteos,reserva del hotel por,1,reserva del hotel por <num> noches desde el <num> de <mes>
+feedforward ventana fija,reserva del hotel por,1,reserva del hotel por favor
+GRU,reserva del hotel por,1,reserva del hotel por <num> noches
+n-grama conteos,reserva del hotel por,2,reserva del hotel por una ofrecéis masajes?
+feedforward ventana fija,reserva del hotel por,2,reserva del hotel por una semana
+GRU,reserva del hotel por,2,reserva del hotel por <num> noches
+n-grama conteos,reserva del hotel por,3,reserva del hotel por una noche para el próximo viernes <num> manera de acceder al gimnasio en silla de ruedas
+feedforward ventana fija,reserva del hotel por,3,"reserva del hotel por <num> noches, por favor"
+GRU,reserva del hotel por,3,reserva del hotel por <num> noches desde el <num> de <mes>
+n-grama conteos,quiero una habitación para,1,quiero una habitación para <num> adultos
+feedforward ventana fija,quiero una habitación para,1,quiero una habitación para <num> adultos y <num> niños
+GRU,quiero una habitación para,1,quiero una habitación para <num> personas a las <hora> de la tarde
+n-grama conteos,quiero una habitación para,2,quiero una habitación para <num> adultos y <num> niños
+feedforward ventana fija,quiero una habitación para,2,quiero una habitación para <num> adultos y <num> niños
+GRU,quiero una habitación para,2,quiero una habitación para <num> adultos y <num> niños
+n-grama conteos,quiero una habitación para,3,quiero una habitación para <num> adultos y <num> niños
+feedforward ventana fija,quiero una habitación para,3,quiero una habitación para <num> adultos y un niño
+GRU,quiero una habitación para,3,quiero una habitación para <num> adultos y <num> niños

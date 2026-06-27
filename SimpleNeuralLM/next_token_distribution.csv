@@ -1,0 +1,25 @@
+model,token,prob
+n-grama conteos,para,0.04493392070484581
+n-grama conteos,en,0.018502202643171803
+n-grama conteos,de,0.009691629955947136
+n-grama conteos,con,0.009691629955947136
+n-grama conteos,simple,0.009691629955947136
+n-grama conteos,desde,0.009691629955947136
+n-grama conteos,lobby,0.0008810572687224669
+n-grama conteos,van,0.0008810572687224669
+feedforward ventana fija,para,0.33687013387680054
+feedforward ventana fija,doble,0.11078085750341415
+feedforward ventana fija,en,0.10473727434873581
+feedforward ventana fija,familiar,0.07133802026510239
+feedforward ventana fija,simple,0.05963294953107834
+feedforward ventana fija,con,0.05142824351787567
+feedforward ventana fija,de,0.04516534134745598
+feedforward ventana fija,<eos>,0.03811672702431679
+GRU,para,0.35797905921936035
+GRU,con,0.09507390111684799
+GRU,familiar,0.06484389305114746
+GRU,doble,0.058389756828546524
+GRU,en,0.0578470304608345
+GRU,desde,0.05128908529877663
+GRU,más,0.039237573742866516
+GRU,simple,0.02576690912246704
